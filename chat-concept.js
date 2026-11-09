@@ -1,4 +1,20 @@
 (() => {
+  const selectors = '.chat-thread, .plugin-preview, .background-case';
+  const bindShortWords = root => {
+    if (root.nodeType === Node.TEXT_NODE) {
+      if (root.parentElement?.closest(selectors)) root.nodeValue = root.nodeValue.replace(/(^|[\s(«])([а-яё]) (?=\S)/gi, '$1$2\u00a0');
+      return;
+    }
+    if (root.nodeType !== Node.ELEMENT_NODE || (!root.matches(selectors) && !root.closest(selectors) && !root.querySelector(selectors))) return;
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    while (walker.nextNode()) bindShortWords(walker.currentNode);
+  };
+  document.querySelectorAll(selectors).forEach(bindShortWords);
+  new MutationObserver(records => records.forEach(record => record.addedNodes.forEach(bindShortWords)))
+    .observe(document.body, { childList: true, subtree: true });
+})();
+
+(() => {
   const messages = [...document.querySelectorAll('.chat-animate')];
   if (!messages.length || !('IntersectionObserver' in window) ||
       window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -87,6 +103,7 @@
       dialog.querySelector('.keiko-screens').hidden = button.dataset.plugin !== 'keiko';
       dialog.querySelector('.plugin-preview-description').textContent = preview[1];
       dialog.showModal();
+      if (!video.hidden) { video.currentTime = 0; video.play().catch(() => {}); }
       dialog.querySelector('.plugin-preview-close').focus();
     });
   });
@@ -172,6 +189,8 @@
     viewer.showModal(); viewer.querySelector('.keiko-viewer-close').focus();
   });
   viewer.querySelector('.keiko-viewer-close').addEventListener('click', () => viewer.close());
-  viewer.addEventListener('click', event => { if (event.target === viewer) viewer.close(); });
+  viewer.addEventListener('click', event => {
+    if (event.target === viewer || event.target.classList.contains('keiko-viewer-image') || event.target.classList.contains('keiko-viewer-caption')) viewer.close();
+  });
   viewer.addEventListener('close', () => opener?.focus({ preventScroll: true }));
 })();
