@@ -160,6 +160,7 @@ h1, h2, p, figure { margin: 0; }
 .gallery-track.is-dragging .gallery-open { cursor: grabbing; }
 .gallery-image { display: flex; align-items: center; justify-content: center; width: max-content; padding: 10px; overflow: hidden; border: 1px solid rgba(255, 255, 255, .7); border-radius: 12px; background: rgba(226, 233, 241, .55); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
 .gallery-image > img { display: block; width: auto; height: var(--work-height); border-radius: 6px; pointer-events: none; }
+.gallery-track .gallery-image > img[data-full-src] { -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 88%, transparent 100%); mask-image: linear-gradient(to bottom, #000 0%, #000 88%, transparent 100%); }
 .device-group { display: flex; align-items: center; justify-content: center; gap: 12px; width: max-content; height: var(--work-height); }
 .screen-device { display: flex; flex: 0 0 auto; align-items: center; justify-content: center; height: 100%; min-width: 0; overflow: hidden; border-radius: 6px; }
 .screen-device--phone { aspect-ratio: 375 / 812; }
