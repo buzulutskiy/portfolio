@@ -216,6 +216,8 @@ h1, h2, p, figure { margin: 0; }
   .attachment { padding: 16px; }
   .attachment-meta { font-size: 14px; }
   .attachment-body { font-size: 17px; }
+  .gallery-message { margin-top: 10px; margin-bottom: 4px; }
+  .gallery-slides { padding-bottom: 8px; }
   .gallery-label, .gallery-slides { padding-left: 16px; }
   .gallery-nav { width: 40px; height: 40px; }
   .gallery-nav-prev { left: 8px; }

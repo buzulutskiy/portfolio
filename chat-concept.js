@@ -17,6 +17,7 @@
 (() => {
   const messages = [...document.querySelectorAll('.chat-animate')];
   if (!messages.length || !('IntersectionObserver' in window) ||
+      window.matchMedia('(max-width: 560px)').matches ||
       window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   let nextAppearance = 0;
