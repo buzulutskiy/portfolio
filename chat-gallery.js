@@ -187,6 +187,11 @@
   function renderWork() {
     const work = works[selected];
     content.replaceChildren(work.frame.cloneNode(true));
+    content.querySelectorAll('img[data-full-src]').forEach(image => {
+      image.src = image.dataset.fullSrc;
+      image.removeAttribute('width');
+      image.removeAttribute('height');
+    });
     title.textContent = work.title;
     category.textContent = work.category;
     counter.textContent = (selected + 1) + ' / ' + works.length;
