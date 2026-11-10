@@ -39,8 +39,8 @@ h1, h2, p, figure { margin: 0; }
   width: fit-content;
   max-width: min(100%, 580px);
   padding: 15px;
-  color: #25292e;
-  background: rgba(225, 231, 237, .92);
+  color: white;
+  background: #1c1c1e;
   border: 1px solid rgba(255, 255, 255, .22);
   backdrop-filter: blur(18px) saturate(135%);
   -webkit-backdrop-filter: blur(18px) saturate(135%);
@@ -256,9 +256,9 @@ h1, h2, p, figure { margin: 0; }
 .keiko-screens figcaption { margin-top: 6px; color: #586676; font-size: 13px; }
 @media (max-width: 560px) { .keiko-screens:not([hidden]) { gap: 6px; } .keiko-screens figcaption { font-size: 11px; } }
 
-.chat-actions a { display: inline-flex; padding: 8px 12px; border: 1px solid #075ab4; border-radius: 9px; background: #0868c9; color: #fff; font: 500 14px/1.35 "Portfolio Inter", "Helvetica Neue", Arial, sans-serif; text-decoration: none; }
-.chat-actions a:hover { background: #0759ad; }
-.chat-actions a:focus-visible { outline: 2px solid #0868c9; outline-offset: 3px; }
+.chat-actions a { display: inline-flex; padding: 8px 12px; border: 1px solid rgba(255, 255, 255, .3); border-radius: 9px; background: rgba(255, 255, 255, .14); color: rgba(255, 255, 255, .95); font: 500 14px/1.35 "Portfolio Inter", "Helvetica Neue", Arial, sans-serif; text-decoration: none; }
+.chat-actions a:hover { background: rgba(255, 255, 255, .22); }
+.chat-actions a:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
 
 .chat-actions a, .chat-actions button { display: inline-flex; align-items: center; gap: 7px; }
 .chat-actions a, .chat-actions button { border-radius: 11px; }
