@@ -152,6 +152,19 @@
   const video = document.querySelector('.wolf-preview');
   const source = video?.querySelector('source[data-src]');
   if (!source) return;
+  // Reveal native controls only after a deliberate interaction with the preview.
+  const revealControls = () => {
+    if (video.controls) return;
+    video.controls = true;
+    if (video.paused) video.play().catch(() => {});
+  };
+  video.addEventListener('click', revealControls);
+  video.addEventListener('keydown', event => {
+    if ((event.key === 'Enter' || event.key === ' ') && !video.controls) {
+      event.preventDefault();
+      revealControls();
+    }
+  });
   const load = () => { source.src = source.dataset.src; delete source.dataset.src; video.load(); };
   if (!('IntersectionObserver' in window)) { load(); return; }
   const observer = new IntersectionObserver(entries => {
