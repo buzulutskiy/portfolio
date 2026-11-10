@@ -59,9 +59,16 @@
     }
     function goTo(delta) {
       pause();
-      let next = nearest() + delta;
-      if (next < 0) { track.scrollLeft += period(); next += originals.length; }
-      else if (next >= all.length) { track.scrollLeft -= period(); next -= originals.length; }
+      let index = nearest();
+      // Start navigation from the middle copy, leaving room for a full transition.
+      if (index < before.length) {
+        track.scrollLeft += period();
+        index += originals.length;
+      } else if (index >= before.length + originals.length) {
+        track.scrollLeft -= period();
+        index -= originals.length;
+      }
+      const next = index + delta;
       track.scrollTo({ left: position(next), behavior: reduceMotion.matches ? 'auto' : 'smooth' });
       current = ((next - before.length) % originals.length + originals.length) % originals.length;
     }
