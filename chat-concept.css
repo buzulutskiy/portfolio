@@ -329,5 +329,5 @@ h1, h2, p, figure { margin: 0; }
 .viewer-bottom { background: rgba(30, 33, 38, .58); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border-radius: 14px; padding: 8px 12px; }
 
 /* Стрелки на ссылках, открывающих проекты */
-.ai-chip .chip-arrow, .project-chip .chip-arrow { flex: 0 0 auto; margin-left: 9px; color: #657588; font-size: 16px; line-height: 1; }
+.ai-chip .chip-arrow, .project-chip .chip-arrow { flex: 0 0 auto; margin-left: 9px; color: inherit; font-size: inherit; line-height: 1; }
 .ai-chip .chip-arrow { margin-left: 0; }
