@@ -85,7 +85,20 @@
     });
     track.addEventListener('scroll', () => {
       cancelAnimationFrame(animation);
-      animation = requestAnimationFrame(sync);
+      animation = requestAnimationFrame(() => {
+        const cycle = period();
+        if (ready && cycle > 0) {
+          // Reposition within the repeated strip before reaching either end.
+          const shift = track.scrollLeft < cycle * .5 ? cycle :
+            track.scrollLeft >= cycle * 2.5 ? -cycle : 0;
+          if (shift) {
+            track.scrollLeft += shift;
+            if (drag) drag.left += shift;
+            if (autoPos !== null) autoPos += shift;
+          }
+        }
+        sync();
+      });
     }, { passive: true });
     track.addEventListener('keydown', event => {
       if (event.key === 'ArrowRight') { event.preventDefault(); goTo(1); }
