@@ -1,0 +1,5 @@
+@font-face{font-family:PortfolioOnest;src:url('fonts/Onest-Regular.ttf') format('truetype');font-style:normal;font-weight:400;font-display:swap}
+@font-face{font-family:PortfolioOnest;src:url('fonts/Onest-SemiBold.ttf') format('truetype');font-style:normal;font-weight:600;font-display:swap}
+html,body,button,input,select,textarea{font-family:PortfolioOnest,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+h1,h2,h3,h4,header h1,main>section>h2,.project h2,.hello h1,.home-top,.case-top,.home-person,.case-top .case-person,.home-contacts,.case-contacts{font-family:PortfolioOnest,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}
+h1,h2,h3{letter-spacing:-.03em}
